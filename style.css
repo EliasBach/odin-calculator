@@ -1,0 +1,37 @@
+button {
+    text-align: center;
+    align-content: center;
+    margin: 2px;
+    height: 64px;
+    width: 64px;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(44, 44, 44);
+}
+
+.operand {
+    font-style: italic;
+    color: rgb(44, 44, 44);
+    background-color: rgb(200, 200, 255);
+}
+
+.operator {
+    font-weight: 1000px;
+    background-color: rgb(255, 220, 220);
+}
+
+.modifier {
+    background-color: rgb(220, 252, 210);
+}
+
+.equals {
+    background-color: rgb(255, 232, 158);
+}
+
+.all-clear {
+    color: rgb(244, 244, 244);
+    background-color: rgb(24, 24, 24);
+}
