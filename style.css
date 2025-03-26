@@ -35,3 +35,14 @@ button {
     color: rgb(244, 244, 244);
     background-color: rgb(24, 24, 24);
 }
+
+#display {
+    height: 100px;
+    width: 300px;
+    text-align: center;
+    align-content: center;
+    margin: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+}
