@@ -28,6 +28,12 @@ operator_btns.forEach(button => button.addEventListener("click",
     () => operator_press(button)))
 
 function operator_press(button) {
+    // when chaining operations, e.g. 1 + 2 -3
+    // the first two numbers are operated on first
+    // this can't be done at the beginning when no number is stored
+    if (numStored != null) {
+        calculate(operationCurrent, numStored, numCurrent)
+    }
     if (last_press == "operand" || last_press == "equals") {
          numStored = numCurrent
     }
