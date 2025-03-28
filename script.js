@@ -1,9 +1,9 @@
 // Global Variables and initialisation
 const display = document.querySelector("#display")
-let numA = null // current number
-let numB = null // stored number
-let current_operation = false
-let next_number_input_flag = false
+let numCurrent = null
+let numStored = null
+let operationCurrent = null
+let last_press = null
 
 // Button Functionality
 // OPERANDS (ie numbers)
@@ -12,14 +12,14 @@ operand_btns.forEach(button => button.addEventListener("click",
     () => operand_press(button)))
 
 function operand_press(button) {
-    if (next_number_input_flag) {
-        // if previous button press was operator (+-*/=):
-        // reset display and store number
-        numA = display.textContent
+    if (last_press == "operator"|| last_press == "equals") {
+        // if previous button press was an operator (+-*/=):
+        // reset display, so that new number can be entered
         display.textContent = ""
-        next_number_input_flag = false
     }
     display.textContent += button.value
+    numCurrent = parseFloat(display.textContent)
+    last_press = "operand"
 }
 
 // OPERATORS (ie plus, minus, times, divide)
@@ -28,60 +28,51 @@ operator_btns.forEach(button => button.addEventListener("click",
     () => operator_press(button)))
 
 function operator_press(button) {
-    // store the operation (+-*/) that needs to be performed
-    // as well the first number
-    current_operation = button.value
-    numB = parseFloat(display.textContent)
-    //boolean is used to to clear the display when the next number is pressed
-    next_number_input_flag = true
+    if (last_press == "operand" || last_press == "equals") {
+         numStored = numCurrent
+    }
+    operationCurrent = button.value
+    last_press = "operator"
 }
 
 // EQUALS (ie calculate)
 const equals_btn = document.querySelector("#equals")
-equals_btn.addEventListener("click", () => calculate(current_operation, numA, numB))
+equals_btn.addEventListener("click", () => calculate(operationCurrent, numStored, numCurrent))
 
 function calculate(operation, numA, numB) {
-    // if no operation is stored: do nothing
-    if (current_operation) {
-        numA = parseFloat(display.textContent)
-        display.textContent = ""
-        let AB = 0
+    if (last_press == "operand") {
         if (operation == "+") {
-            AB = (numB + numA)
+            numCurrent = numA + numB
+        } else if (operation == "-") {
+            numCurrent = numA - numB
+        } else if (operation == "*") {
+            numCurrent = numA * numB
+        } else if (operation == "/") {
+            numCurrent = numA / numB
         }
-        if (operation == "-") {
-            AB = (numB - numA)
-        }
-        if (operation == "*") {
-            AB = (numB * numA)
-        }
-        if (operation == "/") {
-            AB = (numB / numA)
-        }
-        display.textContent = AB.toString()
-        current_operation = null
-        next_number_input_flag = true
-        numB = numA
-        numA = null
+        display.textContent = numCurrent
+        last_press = "equals"
     }
 }
-
+    
 // MODIFIERS
 const percentage_btn = document.querySelector("#percentage")
 percentage_btn.addEventListener("click", () => percentage())
 function percentage() {
-    display.textContent = parseFloat(display.textContent) / 100
+    numCurrent /= 100
+    display.textContent = numCurrent.toString()
 }
 const changesign_btn = document.querySelector("#change-sign")
 changesign_btn.addEventListener("click", () => changesign())
 function changesign() {
-    display.textContent = parseFloat(display.textContent) * -1
+    numCurrent *= -1
+    display.textContent = numCurrent.toString()
 }
 
 const decimal_btn = document.querySelector("#decimal") 
 decimal_btn.addEventListener("click", () => decimal())
 function decimal () {
-    // checks if number is an interger, if yes, the decimal is added to display
+    // does not cover the case where 1.00 is in display
     if (parseFloat(display.textContent)%1 == 0) {
         operand_press(decimal_btn)
      }
@@ -93,12 +84,8 @@ allclear_btn.addEventListener("click", () => allclear())
 
 function allclear() {
     display.textContent = ""
-    numA = null
-    numB = null
-    current_operation = false
-    next_number_input_flag = false
+    numCurrent = null
+    numStored = null
+    operationCurrent = null
+    last_press = null
 }
-
-// TO DO floating point number sometimes causes inaccuarys with many decimals
-// pressing equals =, then operator then equals again, makes it that numB is operatred on itself,
-// even though I want to use numA to redo the previous operation
