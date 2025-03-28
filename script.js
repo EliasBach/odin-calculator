@@ -57,6 +57,8 @@ function calculate(operation, numA, numB) {
             numCurrent = numA / numB
         }
         display.textContent = numCurrent
+        operationCurrent = null // prevents previous operation being applied 
+        // if equals is pressed again after entering a number
         last_press = "equals"
     }
 }
@@ -75,13 +77,13 @@ function changesign() {
     display.textContent = numCurrent.toString()
 }
 
+// DECIMAL
 const decimal_btn = document.querySelector("#decimal") 
 decimal_btn.addEventListener("click", () => decimal())
 function decimal () {
-    // does not cover the case where 1.00 is in display
-    if (parseFloat(display.textContent)%1 == 0) {
+    if (!display.textContent.includes(".")) {
         operand_press(decimal_btn)
-     }
+    }
 }
 
 // ALL CLEAR (ie reset everything)
