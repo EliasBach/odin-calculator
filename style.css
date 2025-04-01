@@ -16,7 +16,11 @@ button {
     border-color: rgb(44, 44, 44);
 }
 
-.operand {
+button:active {
+    opacity: 0.5;
+  }
+
+.operand, .decimal {
     font-style: italic;
     color: rgb(44, 44, 44);
     background-color: rgb(200, 200, 255);

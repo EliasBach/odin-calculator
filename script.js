@@ -86,6 +86,14 @@ function decimal () {
     }
 }
 
+//DELETE 
+const del_btn = document.querySelector("#delete") 
+del_btn.addEventListener("click", () => del())
+function del () {
+    numCurrent = Math.floor(numCurrent / 10)
+    display.textContent = numCurrent.toString()
+}
+
 // ALL CLEAR (ie reset everything)
 const allclear_btn = document.querySelector("#all-clear")
 allclear_btn.addEventListener("click", () => allclear())
