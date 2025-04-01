@@ -2,6 +2,24 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+#container {
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    align-content: center;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgb(44, 44, 44);
+    padding: 5px;
+    max-width: fit-content;
+    background-color: rgb(220, 240, 255);
+}
+
+#display {
+    background-color: white;
+}
+
 button {
     text-align: center;
     align-content: center;
@@ -23,7 +41,7 @@ button:active {
 .operand, .decimal {
     font-style: italic;
     color: rgb(44, 44, 44);
-    background-color: rgb(200, 200, 255);
+    background-color: rgb(199, 199, 255);
 }
 
 .operator {
@@ -36,12 +54,12 @@ button:active {
 }
 
 .equals {
-    background-color: rgb(255, 232, 158);
+    background-color: rgb(255, 240, 200);
 }
 
 .all-clear {
     color: rgb(244, 244, 244);
-    background-color: rgb(24, 24, 24);
+    background-color: rgb(55, 55, 55);
 }
 
 #display {

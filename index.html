@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin Calculator</title>
+    <title>The Odin Calculator</title>
     <link rel=stylesheet  href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    <h1>The Odin Calculator</h1>
     <div id="container">
-        <div id="display"></div>
-        <button id="btn0" class="operand" value="0">0</button>
-        <button id="decimal" class="decimal" value=".">.</button>
+        <div>
+            <div id="display"></div>
+            <button id="all-clear" class="all-clear">AC</button>
+            <button id="btn0" class="operand" value="0">0</button>
+            <button id="decimal" class="decimal" value=".">.</button>
+        </div>
         <div>
             <button id="btn1" class="operand" value="1">1</button>
             <button id="btn2" class="operand" value="2">2</button>
@@ -37,7 +41,7 @@
             <button id="equals" class="equals">=</button>
             <button id="percentage" class="modifier">%</button>
             <button id="change-sign" class="modifier">+/-</button>
-            <button id="all-clear" class="all-clear">AC</button>
+            <button id="delete" class="modifier">Del</button>
         </div>
     </div>
 </body>
