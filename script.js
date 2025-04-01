@@ -56,7 +56,7 @@ function calculate(operation, numA, numB) {
         } else if (operation == "/") {
             numCurrent = numA / numB
         }
-        display.textContent = numCurrent
+        display.textContent = Math.round(numCurrent*1000000)/1000000
         operationCurrent = null // prevents previous operation being applied 
         // if equals is pressed again after entering a number
         last_press = "equals"
