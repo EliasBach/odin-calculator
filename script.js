@@ -90,14 +90,13 @@ function decimal () {
 const del_btn = document.querySelector("#delete") 
 del_btn.addEventListener("click", () => del())
 function del () {
-    numCurrent = Math.floor(numCurrent / 10)
-    display.textContent = numCurrent.toString()
+    display.textContent = numCurrent.toString().slice(0,-1)
+    numCurrent = parseFloat(display.textContent)
 }
 
 // ALL CLEAR (ie reset everything)
 const allclear_btn = document.querySelector("#all-clear")
 allclear_btn.addEventListener("click", () => allclear())
-
 function allclear() {
     display.textContent = ""
     numCurrent = null
